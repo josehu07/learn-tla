@@ -1,0 +1,34 @@
+@!@!@STARTMSG 2262:0 @!@!@
+TLC2 Version 2.16 of 31 December 2020 (rev: cdddf55)
+@!@!@ENDMSG 2262 @!@!@
+@!@!@STARTMSG 2187:0 @!@!@
+Running breadth-first search Model-Checking with fp 124 and seed 3515420388851223614 with 1 worker on 8 cores with 3548MB heap and 64MB offheap memory [pid: 13934] (Linux 5.15.90.1-microsoft-standard-WSL2 amd64, Ubuntu 11.0.19 x86_64, MSBDiskFPSet, DiskStateQueue).
+@!@!@ENDMSG 2187 @!@!@
+@!@!@STARTMSG 2220:0 @!@!@
+Starting SANY...
+@!@!@ENDMSG 2220 @!@!@
+Parsing file /home/jose/Courses/learn-tla/Session4.tla
+Labels added.
+Parsing file /tmp/Integers.tla
+Parsing file /tmp/Sequences.tla
+Parsing file /tmp/TLC.tla
+Parsing file /tmp/Naturals.tla
+Parsing file /tmp/FiniteSets.tla
+Semantic processing of module Naturals
+Semantic processing of module Integers
+Semantic processing of module Sequences
+Semantic processing of module FiniteSets
+Semantic processing of module TLC
+Semantic processing of module Session4
+@!@!@STARTMSG 2219:0 @!@!@
+SANY finished.
+@!@!@ENDMSG 2219 @!@!@
+@!@!@STARTMSG 2185:0 @!@!@
+Starting... (2023-05-31 15:40:46)
+@!@!@ENDMSG 2185 @!@!@
+@!@!@STARTMSG 2222:1 @!@!@
+The constant parameter minValue is not assigned a value by the configuration file.
+@!@!@ENDMSG 2222 @!@!@
+@!@!@STARTMSG 2186:0 @!@!@
+Finished in 285ms at (2023-05-31 15:40:46)
+@!@!@ENDMSG 2186 @!@!@
