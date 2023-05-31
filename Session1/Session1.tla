@@ -2,19 +2,19 @@
 EXTENDS TLC, Integers
 
 (*--algorithm Session1
-variables x \in 1..9;
+variables x \in 1..10;
 
 begin
     assert x ^ 2 <= 100;
 end algorithm; *)
 
-\* BEGIN TRANSLATION (chksum(pcal) = "b8322862" /\ chksum(tla) = "be6f932a")
+\* BEGIN TRANSLATION (chksum(pcal) = "dd41ef93" /\ chksum(tla) = "b20ba679")
 VARIABLES x, pc
 
 vars == << x, pc >>
 
 Init == (* Global variables *)
-        /\ x \in 1..9
+        /\ x \in 1..10
         /\ pc = "Lbl_1"
 
 Lbl_1 == /\ pc = "Lbl_1"

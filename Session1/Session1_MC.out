@@ -2,11 +2,12 @@
 TLC2 Version 2.16 of 31 December 2020 (rev: cdddf55)
 @!@!@ENDMSG 2262 @!@!@
 @!@!@STARTMSG 2187:0 @!@!@
-Running breadth-first search Model-Checking with fp 127 and seed -1673751786159066285 with 1 worker on 8 cores with 3548MB heap and 64MB offheap memory [pid: 17323] (Linux 5.15.90.1-microsoft-standard-WSL2 amd64, Ubuntu 11.0.19 x86_64, MSBDiskFPSet, DiskStateQueue).
+Running breadth-first search Model-Checking with fp 48 and seed -6363522542829213140 with 1 worker on 8 cores with 3548MB heap and 64MB offheap memory [pid: 17357] (Linux 5.15.90.1-microsoft-standard-WSL2 amd64, Ubuntu 11.0.19 x86_64, MSBDiskFPSet, DiskStateQueue).
 @!@!@ENDMSG 2187 @!@!@
 @!@!@STARTMSG 2220:0 @!@!@
 Starting SANY...
 @!@!@ENDMSG 2220 @!@!@
+Parsing file /home/jose/Courses/learn-pcal/Session1/Session1_MC.tla
 Parsing file /home/jose/Courses/learn-pcal/Session1/Session1.tla
 Labels added.
 Parsing file /tmp/TLC.tla
@@ -20,11 +21,12 @@ Semantic processing of module FiniteSets
 Semantic processing of module TLC
 Semantic processing of module Integers
 Semantic processing of module Session1
+Semantic processing of module Session1_MC
 @!@!@STARTMSG 2219:0 @!@!@
 SANY finished.
 @!@!@ENDMSG 2219 @!@!@
 @!@!@STARTMSG 2185:0 @!@!@
-Starting... (2023-05-31 17:45:32)
+Starting... (2023-05-31 17:45:36)
 @!@!@ENDMSG 2185 @!@!@
 @!@!@STARTMSG 2189:0 @!@!@
 Computing initial states...
@@ -39,7 +41,7 @@ Computed 4 initial states...
 Computed 8 initial states...
 @!@!@ENDMSG 2269 @!@!@
 @!@!@STARTMSG 2190:0 @!@!@
-Finished computing initial states: 10 distinct states generated at 2023-05-31 17:45:32.
+Finished computing initial states: 10 distinct states generated at 2023-05-31 17:45:36.
 @!@!@ENDMSG 2190 @!@!@
 @!@!@STARTMSG 2193:0 @!@!@
 Model checking completed. No error has been found.
@@ -48,7 +50,7 @@ Model checking completed. No error has been found.
   calculated (optimistic):  val = 1.1E-17
 @!@!@ENDMSG 2193 @!@!@
 @!@!@STARTMSG 2201:0 @!@!@
-The coverage statistics at 2023-05-31 17:45:32
+The coverage statistics at 2023-05-31 17:45:36
 @!@!@ENDMSG 2201 @!@!@
 @!@!@STARTMSG 2773:0 @!@!@
 <Init line 16, col 1 to line 16, col 4 of module Session1>: 10:10
@@ -93,7 +95,7 @@ The coverage statistics at 2023-05-31 17:45:32
 End of statistics.
 @!@!@ENDMSG 2202 @!@!@
 @!@!@STARTMSG 2200:0 @!@!@
-Progress(2) at 2023-05-31 17:45:32: 30 states generated (4,235 s/min), 20 distinct states found (2,823 ds/min), 0 states left on queue.
+Progress(2) at 2023-05-31 17:45:36: 30 states generated (4,545 s/min), 20 distinct states found (3,030 ds/min), 0 states left on queue.
 @!@!@ENDMSG 2200 @!@!@
 @!@!@STARTMSG 2199:0 @!@!@
 30 states generated, 20 distinct states found, 0 states left on queue.
@@ -105,5 +107,5 @@ The depth of the complete state graph search is 2.
 The average outdegree of the complete state graph is 1 (minimum is 0, the maximum 1 and the 95th percentile is 1).
 @!@!@ENDMSG 2268 @!@!@
 @!@!@STARTMSG 2186:0 @!@!@
-Finished in 429ms at (2023-05-31 17:45:32)
+Finished in 401ms at (2023-05-31 17:45:36)
 @!@!@ENDMSG 2186 @!@!@

@@ -3,16 +3,16 @@ precedes the module is ignored.
 
 ------------------------------- MODULE Session2 -------------------------------
 EXTENDS Integers, TLC
- 
-(*--algorithm AnyName {
-   variable x = {"a", "b"}, y = <<1, 2, 3>> ;
-   {  
-     x := x \cup {"c"} ;
-     print x ;
-     y[2] := 4 ;
-     print y ;
-   }
-} *)
+
+(*--algorithm AnyName
+variable x = {"a", "b"}, y = <<1, 2, 3>> ;
+
+begin
+    x := x \cup {"c"} ;
+    print x ;
+    y[2] := 4 ;
+    print y ;
+end algorithm; *)
 
 \* BEGIN TRANSLATION (chksum(pcal) = "4e2a2588" /\ chksum(tla) = "1d904e56")
 VARIABLES x, y, pc

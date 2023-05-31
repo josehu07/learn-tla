@@ -4,23 +4,28 @@ EXTENDS Integers, Sequences, TLC
 CONSTANT Tuples, minValue
 ASSUME /\ Tuples \subseteq Seq(Int)
        /\ minValue \in Int
-       /\ \A t \in Tuples : \A i \in 1..Len(t) : t[i] > minValue 
+       /\ \A t \in Tuples : \A i \in 1..Len(t) : t[i] > minValue
 
-(*--algorithm TupleMaxND {
-   variables inp \in Tuples, max = minValue, I = 1..Len(inp) ;    
-   { while (I /= {}) {
-       with (i \in I) {
-         if (inp[i] > max) { max := inp[i] } ;
-         I := I \ {i}
-       }
-     } ;
-     assert IF inp = << >> THEN max = minValue
-                           ELSE /\ \E n \in 1..Len(inp) : max = inp[n]
-                                /\ \A n \in 1..Len(inp) : max >= inp[n]
-   }
-} *)
+(*--algorithm TupleMaxND
+variables inp \in Tuples, max = minValue, I = 1..Len(inp) ; 
 
-\* BEGIN TRANSLATION (chksum(pcal) = "53b5c462" /\ chksum(tla) = "fb4ac102")
+begin
+    while I /= {} do
+        with i \in I do
+            if inp[i] > max then
+                max := inp[i];
+            end if;
+            I := I \ {i};
+        end with;
+    end while;
+
+    assert IF inp = << >>
+            THEN max = minValue
+            ELSE /\ \E n \in 1..Len(inp) : max = inp[n]
+                 /\ \A n \in 1..Len(inp) : max >= inp[n]
+end algorithm; *)
+
+\* BEGIN TRANSLATION (chksum(pcal) = "48cc0d40" /\ chksum(tla) = "50ed721e")
 VARIABLES inp, max, I, pc
 
 vars == << inp, max, I, pc >>
@@ -40,10 +45,11 @@ Lbl_1 == /\ pc = "Lbl_1"
                                     /\ max' = max
                          /\ I' = I \ {i}
                     /\ pc' = "Lbl_1"
-               ELSE /\ Assert(IF inp = << >> THEN max = minValue
-                                             ELSE /\ \E n \in 1..Len(inp) : max = inp[n]
-                                                  /\ \A n \in 1..Len(inp) : max >= inp[n], 
-                              "Failure of assertion at line 17, column 6.")
+               ELSE /\ Assert(IF inp = << >>
+                               THEN max = minValue
+                               ELSE /\ \E n \in 1..Len(inp) : max = inp[n]
+                                    /\ \A n \in 1..Len(inp) : max >= inp[n], 
+                              "Failure of assertion at line 22, column 5.")
                     /\ pc' = "Done"
                     /\ UNCHANGED << max, I >>
          /\ inp' = inp

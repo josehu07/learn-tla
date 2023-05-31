@@ -5,14 +5,14 @@ CONSTANT MSet, NSet
 ASSUME /\ MSet \subseteq Int
        /\ NSet \subseteq Nat
 
-(*--algorithm Session3proj
+(*--algorithm ComputePower
 variables m \in MSet, n \in NSet, res = 1, i = 1;
 
 begin
     assert /\ m \in Int
            /\ n \in Nat;
     
-    while (i =< n) do
+    while i =< n do
         res := res * m;
         i := i + 1;
     end while;
@@ -20,7 +20,7 @@ begin
     assert res = m ^ n;
 end algorithm; *)
 
-\* BEGIN TRANSLATION (chksum(pcal) = "8bd354f5" /\ chksum(tla) = "3e0a8e80")
+\* BEGIN TRANSLATION (chksum(pcal) = "837e543b" /\ chksum(tla) = "8a8883fb")
 VARIABLES m, n, res, i, pc
 
 vars == << m, n, res, i, pc >>
@@ -40,7 +40,7 @@ Lbl_1 == /\ pc = "Lbl_1"
          /\ UNCHANGED << m, n, res, i >>
 
 Lbl_2 == /\ pc = "Lbl_2"
-         /\ IF (i =< n)
+         /\ IF i =< n
                THEN /\ res' = res * m
                     /\ i' = i + 1
                     /\ pc' = "Lbl_2"

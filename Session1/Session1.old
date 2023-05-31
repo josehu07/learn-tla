@@ -2,7 +2,7 @@
 EXTENDS TLC, Integers
 
 (*--algorithm Session1
-variables x \in 1..9;
+variables x \in 1..10;
 
 begin
     assert x ^ 2 <= 100;
