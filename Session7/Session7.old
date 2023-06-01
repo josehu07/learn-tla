@@ -16,27 +16,27 @@ end process;
 
 end algorithm; *)
 
-\* BEGIN TRANSLATION (chksum(pcal) = "95e0a33" /\ chksum(tla) = "fe9d3937")
+\* BEGIN TRANSLATION (chksum(pcal) = "c9009fa5" /\ chksum(tla) = "f9f5ea81")
 VARIABLES x, pc
 
 vars == << x, pc >>
 
-ProcSet == {"ProcA"} \cup {"ProcB"}
+ProcSet == {} \cup {-7}
 
 Init == (* Global variables *)
         /\ x = 0
-        /\ pc = [self \in ProcSet |-> CASE self = "ProcA" -> "a"
-                                        [] self = "ProcB" -> "b"]
+        /\ pc = [self \in ProcSet |-> CASE self = 3 -> "a"
+                                        [] self = -7 -> "b"]
 
-a == /\ pc["ProcA"] = "a"
+a == /\ pc[3] = "a"
      /\ x' = x + 1
-     /\ pc' = [pc EXCEPT !["ProcA"] = "Done"]
+     /\ pc' = [pc EXCEPT ![3] = "Done"]
 
 A == a
 
-b == /\ pc["ProcB"] = "b"
+b == /\ pc[-7] = "b"
      /\ x' = x + 1
-     /\ pc' = [pc EXCEPT !["ProcB"] = "Done"]
+     /\ pc' = [pc EXCEPT ![-7] = "Done"]
 
 B == b
 
