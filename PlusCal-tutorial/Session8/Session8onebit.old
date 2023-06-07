@@ -1,4 +1,4 @@
----- MODULE Session8 ----
+---- MODULE Session8onebit ----
 EXTENDS TLC, Integers, FiniteSets
 
 CONSTANT N, Procs
@@ -6,22 +6,7 @@ ASSUME /\ N \in Nat
        /\ N > 0
        /\ Procs = 0..(N-1)
 
-(*-- OFF algorithm Alternate
-variable turn \in Procs;
-
-process procs \in Procs
-begin
-    ncs: while TRUE do
-            skip;
-    enter:  await turn = self;
-    cs:     skip;
-    exit:   turn := (turn + 1) % N;
-    end while;
-end process;
-
-end algorithm; *)
-
-(*-- OFF algorithm 1BitProtocol
+(*--algorithm 1BitProtocol
 variable flag = [i \in Procs |-> FALSE];
 
 process procs \in Procs
@@ -48,35 +33,6 @@ begin
     cs:     skip;
     exit:   flag[self] := FALSE;
             j := 0;
-    end while;
-end process;
-end algorithm; *)
-
-(*--algorithm Peterson
-variable level = [i \in Procs |-> -1], last_to_enter = [i \in 0..N-2 |-> -1];
-
-process procs \in Procs
-variable l = 0, k = 0;
-begin
-    ncs: while TRUE do
-            skip;
-    enter:  while l < (N-1) do
-                level[self] := l;
-    enter2:     last_to_enter[l] := self;
-    enter3:     while k < N do
-                    if (k /= self) /\ (level[k] >= l) then
-    enter4:             if last_to_enter[l] = self then
-    enter5:                 await (level[k] < 0) \/ (last_to_enter[l] /= self);
-                        end if;
-                    end if;
-    enter6:         k := k + 1;
-                end while;
-                l := l + 1;
-                k := 0;
-            end while;
-            l := 0;
-    cs:     skip;
-    exit:   level[self] := -1;
     end while;
 end process;
 end algorithm; *)

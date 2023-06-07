@@ -2,13 +2,13 @@
 TLC2 Version 2.16 of 31 December 2020 (rev: cdddf55)
 @!@!@ENDMSG 2262 @!@!@
 @!@!@STARTMSG 2187:0 @!@!@
-Running breadth-first search Model-Checking with fp 43 and seed -6369194422362563723 with 1 worker on 8 cores with 3548MB heap and 64MB offheap memory [pid: 26319] (Linux 5.15.90.1-microsoft-standard-WSL2 amd64, Ubuntu 11.0.19 x86_64, MSBDiskFPSet, DiskStateQueue).
+Running breadth-first search Model-Checking with fp 101 and seed 6836306690890504197 with 1 worker on 8 cores with 3548MB heap and 64MB offheap memory [pid: 2750] (Linux 5.15.90.1-microsoft-standard-WSL2 amd64, Ubuntu 11.0.19 x86_64, MSBDiskFPSet, DiskStateQueue).
 @!@!@ENDMSG 2187 @!@!@
 @!@!@STARTMSG 2220:0 @!@!@
 Starting SANY...
 @!@!@ENDMSG 2220 @!@!@
-Parsing file /home/jose/Courses/learn-pcal/Session8/Session8_MC.tla
-Parsing file /home/jose/Courses/learn-pcal/Session8/Session8.tla
+Parsing file /home/jose/Courses/learn-tla/PlusCal-tutorial/Session8/Session8_MC.tla
+Parsing file /home/jose/Courses/learn-tla/PlusCal-tutorial/Session8/Session8alt.tla
 Parsing file /tmp/TLC.tla
 Parsing file /tmp/Integers.tla
 Parsing file /tmp/FiniteSets.tla
@@ -19,275 +19,158 @@ Semantic processing of module Sequences
 Semantic processing of module FiniteSets
 Semantic processing of module TLC
 Semantic processing of module Integers
-Semantic processing of module Session8
+Semantic processing of module Session8alt
 Semantic processing of module Session8_MC
 @!@!@STARTMSG 2219:0 @!@!@
 SANY finished.
 @!@!@ENDMSG 2219 @!@!@
 @!@!@STARTMSG 2185:0 @!@!@
-Starting... (2023-06-01 06:11:10)
+Starting... (2023-06-06 16:05:33)
 @!@!@ENDMSG 2185 @!@!@
 @!@!@STARTMSG 2189:0 @!@!@
 Computing initial states...
 @!@!@ENDMSG 2189 @!@!@
+@!@!@STARTMSG 2269:0 @!@!@
+Computed 2 initial states...
+@!@!@ENDMSG 2269 @!@!@
 @!@!@STARTMSG 2190:0 @!@!@
-Finished computing initial states: 1 distinct state generated at 2023-06-01 06:11:10.
+Finished computing initial states: 3 distinct states generated at 2023-06-06 16:05:33.
 @!@!@ENDMSG 2190 @!@!@
 @!@!@STARTMSG 2193:0 @!@!@
 Model checking completed. No error has been found.
   Estimates of the probability that TLC did not check all reachable states
   because two distinct states had the same fingerprint:
-  calculated (optimistic):  val = 3.8E-11
+  calculated (optimistic):  val = 1.3E-16
 @!@!@ENDMSG 2193 @!@!@
 @!@!@STARTMSG 2201:0 @!@!@
-The coverage statistics at 2023-06-01 06:11:11
+The coverage statistics at 2023-06-06 16:05:33
 @!@!@ENDMSG 2201 @!@!@
 @!@!@STARTMSG 2773:0 @!@!@
-<Init line 91, col 1 to line 91, col 4 of module Session8>: 1:1
+<Init line 30, col 1 to line 30, col 4 of module Session8alt>: 3:3
 @!@!@ENDMSG 2773 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 92, col 9 to line 97, col 44 of module Session8: 1
+  line 31, col 12 to line 31, col 25 of module Session8alt: 1
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 32, col 12 to line 32, col 44 of module Session8alt: 3
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2772:0 @!@!@
-<ncs line 99, col 1 to line 99, col 9 of module Session8>: 923:2994
+<ncs line 34, col 1 to line 34, col 9 of module Session8alt>: 31:60
 @!@!@ENDMSG 2772 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 99, col 17 to line 99, col 32 of module Session8: 63543
+  line 34, col 17 to line 34, col 32 of module Session8alt: 204
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 99, col 17 to line 99, col 24 of module Session8: 60549
+  |line 34, col 17 to line 34, col 24 of module Session8alt: 144
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 100, col 17 to line 100, col 20 of module Session8: 2994
+  line 35, col 17 to line 35, col 20 of module Session8alt: 60
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 101, col 17 to line 101, col 51 of module Session8: 2994
+  line 36, col 17 to line 36, col 51 of module Session8alt: 60
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 102, col 17 to line 102, col 58 of module Session8: 2994
+  line 37, col 17 to line 37, col 28 of module Session8alt: 60
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2772:0 @!@!@
-<enter line 104, col 1 to line 104, col 11 of module Session8>: 2186:5441
+<enter line 39, col 1 to line 39, col 11 of module Session8alt>: 7:12
 @!@!@ENDMSG 2772 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 104, col 19 to line 104, col 36 of module Session8: 65990
+  line 39, col 19 to line 39, col 36 of module Session8alt: 156
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 104, col 19 to line 104, col 26 of module Session8: 60549
+  |line 39, col 19 to line 39, col 26 of module Session8alt: 144
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 105, col 22 to line 105, col 36 of module Session8: 5441
+  line 40, col 19 to line 40, col 29 of module Session8alt: 72
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 106, col 27 to line 108, col 35 of module Session8: 4906
+  |line 40, col 19 to line 40, col 22 of module Session8alt: 60
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 109, col 27 to line 111, col 43 of module Session8: 535
+  |line 40, col 26 to line 40, col 29 of module Session8alt: 60
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 112, col 19 to line 112, col 50 of module Session8: 5441
+  line 41, col 19 to line 41, col 50 of module Session8alt: 12
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 42, col 19 to line 42, col 30 of module Session8alt: 12
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2772:0 @!@!@
-<enter2 line 114, col 1 to line 114, col 12 of module Session8>: 1861:5392
+<cs line 44, col 1 to line 44, col 8 of module Session8alt>: 7:12
 @!@!@ENDMSG 2772 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 114, col 20 to line 114, col 38 of module Session8: 65941
+  line 44, col 16 to line 44, col 30 of module Session8alt: 156
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 114, col 20 to line 114, col 27 of module Session8: 60549
+  |line 44, col 16 to line 44, col 23 of module Session8alt: 144
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 115, col 20 to line 115, col 76 of module Session8: 5392
+  line 45, col 16 to line 45, col 19 of module Session8alt: 12
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 116, col 20 to line 116, col 55 of module Session8: 5392
+  line 46, col 16 to line 46, col 49 of module Session8alt: 12
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 117, col 20 to line 117, col 46 of module Session8: 5392
+  line 47, col 16 to line 47, col 27 of module Session8alt: 12
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2772:0 @!@!@
-<enter3 line 119, col 1 to line 119, col 12 of module Session8>: 7568:17150
+<exit line 49, col 1 to line 49, col 10 of module Session8alt>: 0:12
 @!@!@ENDMSG 2772 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 119, col 20 to line 119, col 38 of module Session8: 77699
+  line 49, col 18 to line 49, col 34 of module Session8alt: 156
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 119, col 20 to line 119, col 27 of module Session8: 60549
+  |line 49, col 18 to line 49, col 25 of module Session8alt: 144
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 120, col 23 to line 120, col 33 of module Session8: 17150
+  line 50, col 18 to line 50, col 39 of module Session8alt: 12
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 121, col 34 to line 121, col 81 of module Session8: 14703
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  |line 121, col 35 to line 121, col 49 of module Session8: 14703
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  |line 121, col 56 to line 121, col 80 of module Session8: 10400
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 122, col 39 to line 122, col 77 of module Session8: 8532
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 123, col 39 to line 123, col 77 of module Session8: 6171
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 124, col 31 to line 124, col 50 of module Session8: 14703
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 125, col 28 to line 127, col 65 of module Session8: 2447
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 128, col 20 to line 128, col 55 of module Session8: 17150
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2772:0 @!@!@
-<enter6 line 130, col 1 to line 130, col 12 of module Session8>: 4071:9920
-@!@!@ENDMSG 2772 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 130, col 20 to line 130, col 38 of module Session8: 70469
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  |line 130, col 20 to line 130, col 27 of module Session8: 60549
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 131, col 20 to line 131, col 56 of module Session8: 9920
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 132, col 20 to line 132, col 55 of module Session8: 9920
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 133, col 20 to line 133, col 58 of module Session8: 9920
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2772:0 @!@!@
-<enter4 line 135, col 1 to line 135, col 12 of module Session8>: 3121:9337
-@!@!@ENDMSG 2772 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 135, col 20 to line 135, col 38 of module Session8: 69886
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  |line 135, col 20 to line 135, col 27 of module Session8: 60549
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 136, col 23 to line 136, col 51 of module Session8: 9337
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 137, col 28 to line 137, col 66 of module Session8: 5651
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 138, col 28 to line 138, col 66 of module Session8: 3686
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 139, col 20 to line 139, col 61 of module Session8: 9337
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2772:0 @!@!@
-<enter5 line 141, col 1 to line 141, col 12 of module Session8>: 0:3972
-@!@!@ENDMSG 2772 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 141, col 20 to line 141, col 38 of module Session8: 64419
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  |line 141, col 20 to line 141, col 27 of module Session8: 60549
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 142, col 21 to line 142, col 38 of module Session8: 378
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  |line 142, col 21 to line 142, col 34 of module Session8: 9245
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 142, col 45 to line 142, col 74 of module Session8: 12839
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  |line 142, col 45 to line 142, col 66 of module Session8: 9245
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  |line 142, col 71 to line 142, col 74 of module Session8: 9245
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 143, col 20 to line 143, col 55 of module Session8: 3972
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 144, col 20 to line 144, col 61 of module Session8: 3972
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2772:0 @!@!@
-<cs line 146, col 1 to line 146, col 8 of module Session8>: 247:535
-@!@!@ENDMSG 2772 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 146, col 16 to line 146, col 30 of module Session8: 61084
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  |line 146, col 16 to line 146, col 23 of module Session8: 60549
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 147, col 16 to line 147, col 19 of module Session8: 535
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 148, col 16 to line 148, col 49 of module Session8: 535
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 149, col 16 to line 149, col 57 of module Session8: 535
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2772:0 @!@!@
-<exit line 151, col 1 to line 151, col 10 of module Session8>: 205:535
-@!@!@ENDMSG 2772 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 151, col 18 to line 151, col 34 of module Session8: 61084
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  |line 151, col 18 to line 151, col 25 of module Session8: 60549
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 152, col 18 to line 152, col 53 of module Session8: 535
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 153, col 18 to line 153, col 50 of module Session8: 535
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 154, col 18 to line 154, col 52 of module Session8: 535
+  line 51, col 18 to line 51, col 50 of module Session8alt: 12
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2774:0 @!@!@
-<MutualExclusion line 7, col 1 to line 7, col 15 of module Session8_MC>
+<MutualExclusion line 9, col 1 to line 9, col 15 of module Session8_MC>
 @!@!@ENDMSG 2774 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 7, col 20 to line 8, col 67 of module Session8_MC: 20183
+  line 9, col 20 to line 10, col 67 of module Session8_MC: 48
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 8, col 21 to line 8, col 67 of module Session8_MC: 181647
+  |line 10, col 21 to line 10, col 67 of module Session8_MC: 432
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  ||line 8, col 22 to line 8, col 27 of module Session8_MC: 181647
+  ||line 10, col 22 to line 10, col 27 of module Session8_MC: 432
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  ||line 8, col 33 to line 8, col 67 of module Session8_MC: 121098
+  ||line 10, col 33 to line 10, col 67 of module Session8_MC: 288
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |||line 8, col 35 to line 8, col 66 of module Session8_MC: 121098
+  |||line 10, col 35 to line 10, col 66 of module Session8_MC: 288
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  ||||line 8, col 36 to line 8, col 47 of module Session8_MC: 121098
+  ||||line 10, col 36 to line 10, col 47 of module Session8_MC: 288
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  ||||line 8, col 54 to line 8, col 65 of module Session8_MC: 1070
+  ||||line 10, col 54 to line 10, col 65 of module Session8_MC: 24
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 7, col 32 to line 7, col 36 of module Session8_MC: 20183
+  |line 9, col 32 to line 9, col 36 of module Session8_MC: 48
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2202:0 @!@!@
 End of statistics.
 @!@!@ENDMSG 2202 @!@!@
 @!@!@STARTMSG 2200:0 @!@!@
-Progress(65) at 2023-06-01 06:11:11: 55,277 states generated (3,550,985 s/min), 20,183 distinct states found (1,296,552 ds/min), 0 states left on queue.
+Progress(6) at 2023-06-06 16:05:33: 99 states generated (12,941 s/min), 48 distinct states found (6,274 ds/min), 0 states left on queue.
 @!@!@ENDMSG 2200 @!@!@
 @!@!@STARTMSG 2199:0 @!@!@
-55277 states generated, 20183 distinct states found, 0 states left on queue.
+99 states generated, 48 distinct states found, 0 states left on queue.
 @!@!@ENDMSG 2199 @!@!@
 @!@!@STARTMSG 2194:0 @!@!@
-The depth of the complete state graph search is 65.
+The depth of the complete state graph search is 6.
 @!@!@ENDMSG 2194 @!@!@
 @!@!@STARTMSG 2268:0 @!@!@
-The average outdegree of the complete state graph is 1 (minimum is 0, the maximum 3 and the 95th percentile is 2).
+The average outdegree of the complete state graph is 1 (minimum is 0, the maximum 3 and the 95th percentile is 3).
 @!@!@ENDMSG 2268 @!@!@
 @!@!@STARTMSG 2186:0 @!@!@
-Finished in 940ms at (2023-06-01 06:11:11)
+Finished in 464ms at (2023-06-06 16:05:33)
 @!@!@ENDMSG 2186 @!@!@

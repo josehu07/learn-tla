@@ -1,0 +1,96 @@
+---- MODULE Session8alt ----
+EXTENDS TLC, Integers, FiniteSets
+
+CONSTANT N, Procs
+ASSUME /\ N \in Nat
+       /\ N > 0
+       /\ Procs = 0..(N-1)
+
+(*--algorithm Alternate
+variable turn \in Procs;
+
+process procs \in Procs
+begin
+    ncs: while TRUE do
+            skip;
+    enter:  await turn = self;
+    cs:     skip;
+    exit:   turn := (turn + 1) % N;
+    end while;
+end process;
+end algorithm; *)
+
+\* BEGIN TRANSLATION (chksum(pcal) = "cc7235e3" /\ chksum(tla) = "892aa5a5")
+VARIABLES flag, pc, j
+
+vars == << flag, pc, j >>
+
+ProcSet == (Procs)
+
+Init == (* Global variables *)
+        /\ flag = [i \in Procs |-> FALSE]
+        (* Process procs *)
+        /\ j = [self \in Procs |-> 0]
+        /\ pc = [self \in ProcSet |-> "ncs"]
+
+ncs(self) == /\ pc[self] = "ncs"
+             /\ TRUE
+             /\ pc' = [pc EXCEPT ![self] = "enter"]
+             /\ UNCHANGED << flag, j >>
+
+enter(self) == /\ pc[self] = "enter"
+               /\ flag' = [flag EXCEPT ![self] = TRUE]
+               /\ pc' = [pc EXCEPT ![self] = "enter2"]
+               /\ j' = j
+
+enter2(self) == /\ pc[self] = "enter2"
+                /\ IF j[self] /= self
+                      THEN /\ IF flag[j[self]]
+                                 THEN /\ pc' = [pc EXCEPT ![self] = "enter3"]
+                                      /\ j' = j
+                                 ELSE /\ j' = [j EXCEPT ![self] = j[self] + 1]
+                                      /\ pc' = [pc EXCEPT ![self] = "enter2"]
+                      ELSE /\ j' = [j EXCEPT ![self] = self + 1]
+                           /\ pc' = [pc EXCEPT ![self] = "enter5"]
+                /\ flag' = flag
+
+enter3(self) == /\ pc[self] = "enter3"
+                /\ flag' = [flag EXCEPT ![self] = FALSE]
+                /\ pc' = [pc EXCEPT ![self] = "enter4"]
+                /\ j' = j
+
+enter4(self) == /\ pc[self] = "enter4"
+                /\ ~flag[j[self]]
+                /\ j' = [j EXCEPT ![self] = 0]
+                /\ pc' = [pc EXCEPT ![self] = "enter"]
+                /\ flag' = flag
+
+enter5(self) == /\ pc[self] = "enter5"
+                /\ IF j[self] < N
+                      THEN /\ ~flag[j[self]]
+                           /\ j' = [j EXCEPT ![self] = j[self] + 1]
+                           /\ pc' = [pc EXCEPT ![self] = "enter5"]
+                      ELSE /\ pc' = [pc EXCEPT ![self] = "cs"]
+                           /\ j' = j
+                /\ flag' = flag
+
+cs(self) == /\ pc[self] = "cs"
+            /\ TRUE
+            /\ pc' = [pc EXCEPT ![self] = "exit"]
+            /\ UNCHANGED << flag, j >>
+
+exit(self) == /\ pc[self] = "exit"
+              /\ flag' = [flag EXCEPT ![self] = FALSE]
+              /\ j' = [j EXCEPT ![self] = 0]
+              /\ pc' = [pc EXCEPT ![self] = "ncs"]
+
+procs(self) == ncs(self) \/ enter(self) \/ enter2(self) \/ enter3(self)
+                  \/ enter4(self) \/ enter5(self) \/ cs(self) \/ exit(self)
+
+Next == (\E self \in Procs: procs(self))
+
+Spec == Init /\ [][Next]_vars
+
+\* END TRANSLATION 
+
+====
