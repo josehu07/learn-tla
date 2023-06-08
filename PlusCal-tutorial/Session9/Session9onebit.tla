@@ -6,10 +6,10 @@ ASSUME /\ N \in Nat
        /\ N > 0
        /\ Procs = 0..(N-1)
 
-(*--fair algorithm 1BitProtocol
+(*--algorithm 1BitProtocol
 variable flag = [i \in Procs |-> FALSE];
 
-process procs \in Procs
+fair process procs \in Procs
 variable j = 0;
 begin
     ncs:- while TRUE do
@@ -37,7 +37,7 @@ begin
 end process;
 end algorithm; *)
 
-\* BEGIN TRANSLATION (chksum(pcal) = "68b07bf6" /\ chksum(tla) = "497d86f9")
+\* BEGIN TRANSLATION (chksum(pcal) = "d5952dd1" /\ chksum(tla) = "b87ca15c")
 VARIABLES flag, pc, j
 
 vars == << flag, pc, j >>
@@ -107,7 +107,7 @@ procs(self) == ncs(self) \/ enter(self) \/ enter2(self) \/ enter3(self)
 Next == (\E self \in Procs: procs(self))
 
 Spec == /\ Init /\ [][Next]_vars
-        /\ WF_vars(Next)
+        /\ \A self \in Procs : WF_vars((pc[self] # "ncs") /\ procs(self))
 
 \* END TRANSLATION 
 

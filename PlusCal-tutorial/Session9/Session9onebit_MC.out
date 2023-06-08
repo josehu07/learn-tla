@@ -2,7 +2,7 @@
 TLC2 Version 2.16 of 31 December 2020 (rev: cdddf55)
 @!@!@ENDMSG 2262 @!@!@
 @!@!@STARTMSG 2187:0 @!@!@
-Running breadth-first search Model-Checking with fp 113 and seed -8634345997070188814 with 1 worker on 8 cores with 3548MB heap and 64MB offheap memory [pid: 3747] (Linux 5.15.90.1-microsoft-standard-WSL2 amd64, Ubuntu 11.0.19 x86_64, MSBDiskFPSet, DiskStateQueue).
+Running breadth-first search Model-Checking with fp 72 and seed -5723869279997015323 with 1 worker on 8 cores with 3548MB heap and 64MB offheap memory [pid: 2034] (Linux 5.15.90.1-microsoft-standard-WSL2 amd64, Ubuntu 11.0.19 x86_64, MSBDiskFPSet, DiskStateQueue).
 @!@!@ENDMSG 2187 @!@!@
 @!@!@STARTMSG 2220:0 @!@!@
 Starting SANY...
@@ -25,297 +25,227 @@ Semantic processing of module Session9onebit_MC
 SANY finished.
 @!@!@ENDMSG 2219 @!@!@
 @!@!@STARTMSG 2185:0 @!@!@
-Starting... (2023-06-06 16:30:50)
+Starting... (2023-06-07 20:12:04)
 @!@!@ENDMSG 2185 @!@!@
 @!@!@STARTMSG 2212:0 @!@!@
-Implied-temporal checking--satisfiability problem has 1 branches.
+Implied-temporal checking--satisfiability problem has 2 branches.
 @!@!@ENDMSG 2212 @!@!@
 @!@!@STARTMSG 2189:0 @!@!@
 Computing initial states...
 @!@!@ENDMSG 2189 @!@!@
 @!@!@STARTMSG 2190:0 @!@!@
-Finished computing initial states: 1 distinct state generated at 2023-06-06 16:30:51.
+Finished computing initial states: 1 distinct state generated at 2023-06-07 20:12:04.
 @!@!@ENDMSG 2190 @!@!@
 @!@!@STARTMSG 2200:0 @!@!@
-Progress(22) at 2023-06-06 16:30:51: 1,431 states generated, 568 distinct states found, 0 states left on queue.
+Progress(22) at 2023-06-07 20:12:04: 1,431 states generated, 568 distinct states found, 0 states left on queue.
 @!@!@ENDMSG 2200 @!@!@
 @!@!@STARTMSG 2192:0 @!@!@
-Checking temporal properties for the complete state space with 568 total distinct states at (2023-06-06 16:30:51)
+Checking 2 branches of temporal properties for the complete state space with 1136 total distinct states at (2023-06-07 20:12:04)
 @!@!@ENDMSG 2192 @!@!@
-@!@!@STARTMSG 2116:1 @!@!@
-Temporal properties were violated.
-
-@!@!@ENDMSG 2116 @!@!@
-@!@!@STARTMSG 2264:1 @!@!@
-The following behavior constitutes a counter-example:
-
-@!@!@ENDMSG 2264 @!@!@
-@!@!@STARTMSG 2217:4 @!@!@
-1: <Initial predicate>
-/\ flag = (0 :> FALSE @@ 1 :> FALSE @@ 2 :> FALSE)
-/\ j = (0 :> 0 @@ 1 :> 0 @@ 2 :> 0)
-/\ pc = (0 :> "ncs" @@ 1 :> "ncs" @@ 2 :> "ncs")
-
-@!@!@ENDMSG 2217 @!@!@
-@!@!@STARTMSG 2217:4 @!@!@
-2: <ncs line 53, col 14 to line 56, col 39 of module Session9onebit>
-/\ flag = (0 :> FALSE @@ 1 :> FALSE @@ 2 :> FALSE)
-/\ j = (0 :> 0 @@ 1 :> 0 @@ 2 :> 0)
-/\ pc = (0 :> "enter" @@ 1 :> "ncs" @@ 2 :> "ncs")
-
-@!@!@ENDMSG 2217 @!@!@
-@!@!@STARTMSG 2217:4 @!@!@
-3: <ncs line 53, col 14 to line 56, col 39 of module Session9onebit>
-/\ flag = (0 :> FALSE @@ 1 :> FALSE @@ 2 :> FALSE)
-/\ j = (0 :> 0 @@ 1 :> 0 @@ 2 :> 0)
-/\ pc = (0 :> "enter" @@ 1 :> "ncs" @@ 2 :> "enter")
-
-@!@!@ENDMSG 2217 @!@!@
-@!@!@STARTMSG 2217:4 @!@!@
-4: <ncs line 53, col 14 to line 56, col 39 of module Session9onebit>
-/\ flag = (0 :> FALSE @@ 1 :> FALSE @@ 2 :> FALSE)
-/\ j = (0 :> 0 @@ 1 :> 0 @@ 2 :> 0)
-/\ pc = (0 :> "enter" @@ 1 :> "enter" @@ 2 :> "enter")
-
-@!@!@ENDMSG 2217 @!@!@
-@!@!@STARTMSG 2217:4 @!@!@
-5: <enter line 58, col 16 to line 61, col 24 of module Session9onebit>
-/\ flag = (0 :> FALSE @@ 1 :> TRUE @@ 2 :> FALSE)
-/\ j = (0 :> 0 @@ 1 :> 0 @@ 2 :> 0)
-/\ pc = (0 :> "enter" @@ 1 :> "enter2" @@ 2 :> "enter")
-
-@!@!@ENDMSG 2217 @!@!@
-@!@!@STARTMSG 2217:4 @!@!@
-6: <enter2 line 63, col 17 to line 72, col 31 of module Session9onebit>
-/\ flag = (0 :> FALSE @@ 1 :> TRUE @@ 2 :> FALSE)
-/\ j = (0 :> 0 @@ 1 :> 1 @@ 2 :> 0)
-/\ pc = (0 :> "enter" @@ 1 :> "enter2" @@ 2 :> "enter")
-
-@!@!@ENDMSG 2217 @!@!@
-@!@!@STARTMSG 2217:4 @!@!@
-7: <enter2 line 63, col 17 to line 72, col 31 of module Session9onebit>
-/\ flag = (0 :> FALSE @@ 1 :> TRUE @@ 2 :> FALSE)
-/\ j = (0 :> 0 @@ 1 :> 2 @@ 2 :> 0)
-/\ pc = (0 :> "enter" @@ 1 :> "enter5" @@ 2 :> "enter")
-
-@!@!@ENDMSG 2217 @!@!@
-@!@!@STARTMSG 2217:4 @!@!@
-8: <enter5 line 85, col 17 to line 92, col 31 of module Session9onebit>
-/\ flag = (0 :> FALSE @@ 1 :> TRUE @@ 2 :> FALSE)
-/\ j = (0 :> 0 @@ 1 :> 3 @@ 2 :> 0)
-/\ pc = (0 :> "enter" @@ 1 :> "enter5" @@ 2 :> "enter")
-
-@!@!@ENDMSG 2217 @!@!@
-@!@!@STARTMSG 2217:4 @!@!@
-9: <enter5 line 85, col 17 to line 92, col 31 of module Session9onebit>
-/\ flag = (0 :> FALSE @@ 1 :> TRUE @@ 2 :> FALSE)
-/\ j = (0 :> 0 @@ 1 :> 3 @@ 2 :> 0)
-/\ pc = (0 :> "enter" @@ 1 :> "cs" @@ 2 :> "enter")
-
-@!@!@ENDMSG 2217 @!@!@
-@!@!@STARTMSG 2217:4 @!@!@
-10: <cs line 94, col 13 to line 97, col 38 of module Session9onebit>
-/\ flag = (0 :> FALSE @@ 1 :> TRUE @@ 2 :> FALSE)
-/\ j = (0 :> 0 @@ 1 :> 3 @@ 2 :> 0)
-/\ pc = (0 :> "enter" @@ 1 :> "exit" @@ 2 :> "enter")
-
-@!@!@ENDMSG 2217 @!@!@
-@!@!@STARTMSG 2122:4 @!@!@
-3: Back to state: <exit line 99, col 15 to line 102, col 50 of module Session9onebit>
-
-@!@!@ENDMSG 2122 @!@!@
 @!@!@STARTMSG 2267:0 @!@!@
-Finished checking temporal properties in 00s at 2023-06-06 16:30:51
+Finished checking temporal properties in 00s at 2023-06-07 20:12:04
 @!@!@ENDMSG 2267 @!@!@
+@!@!@STARTMSG 2193:0 @!@!@
+Model checking completed. No error has been found.
+  Estimates of the probability that TLC did not check all reachable states
+  because two distinct states had the same fingerprint:
+  calculated (optimistic):  val = 2.7E-14
+@!@!@ENDMSG 2193 @!@!@
 @!@!@STARTMSG 2201:0 @!@!@
-The coverage statistics at 2023-06-06 16:30:51
+The coverage statistics at 2023-06-07 20:12:04
 @!@!@ENDMSG 2201 @!@!@
 @!@!@STARTMSG 2773:0 @!@!@
-<Init line 47, col 1 to line 47, col 4 of module Session9onebit>: 2:2
+<Init line 47, col 1 to line 47, col 4 of module Session9onebit>: 1:1
 @!@!@ENDMSG 2773 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 48, col 9 to line 51, col 44 of module Session9onebit: 2
+  line 48, col 9 to line 51, col 44 of module Session9onebit: 1
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2772:0 @!@!@
-<ncs line 53, col 1 to line 53, col 9 of module Session9onebit>: 80:243
+<ncs line 53, col 1 to line 53, col 9 of module Session9onebit>: 80:255
 @!@!@ENDMSG 2772 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 53, col 17 to line 53, col 32 of module Session9onebit: 1967
+  line 53, col 17 to line 53, col 32 of module Session9onebit: 2016
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 53, col 17 to line 53, col 24 of module Session9onebit: 1724
+  |line 53, col 17 to line 53, col 24 of module Session9onebit: 1761
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 54, col 17 to line 54, col 20 of module Session9onebit: 243
+  line 54, col 17 to line 54, col 20 of module Session9onebit: 255
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 55, col 17 to line 55, col 51 of module Session9onebit: 243
+  line 55, col 17 to line 55, col 51 of module Session9onebit: 255
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 56, col 17 to line 56, col 39 of module Session9onebit: 243
+  line 56, col 17 to line 56, col 39 of module Session9onebit: 255
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2772:0 @!@!@
-<enter line 58, col 1 to line 58, col 11 of module Session9onebit>: 85:249
+<enter line 58, col 1 to line 58, col 11 of module Session9onebit>: 85:255
 @!@!@ENDMSG 2772 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 58, col 19 to line 58, col 36 of module Session9onebit: 1970
+  line 58, col 19 to line 58, col 36 of module Session9onebit: 2016
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 58, col 19 to line 58, col 26 of module Session9onebit: 1721
+  |line 58, col 19 to line 58, col 26 of module Session9onebit: 1761
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 59, col 19 to line 59, col 54 of module Session9onebit: 249
+  line 59, col 19 to line 59, col 54 of module Session9onebit: 255
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 60, col 19 to line 60, col 54 of module Session9onebit: 249
+  line 60, col 19 to line 60, col 54 of module Session9onebit: 255
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 61, col 19 to line 61, col 24 of module Session9onebit: 249
+  line 61, col 19 to line 61, col 24 of module Session9onebit: 255
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2772:0 @!@!@
-<enter2 line 63, col 1 to line 63, col 12 of module Session9onebit>: 175:372
+<enter2 line 63, col 1 to line 63, col 12 of module Session9onebit>: 175:371
 @!@!@ENDMSG 2772 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 63, col 20 to line 63, col 38 of module Session9onebit: 2092
+  line 63, col 20 to line 63, col 38 of module Session9onebit: 2132
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 63, col 20 to line 63, col 27 of module Session9onebit: 1720
+  |line 63, col 20 to line 63, col 27 of module Session9onebit: 1761
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 64, col 23 to line 64, col 37 of module Session9onebit: 372
+  line 64, col 23 to line 64, col 37 of module Session9onebit: 371
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
   line 65, col 34 to line 65, col 46 of module Session9onebit: 184
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 66, col 39 to line 67, col 47 of module Session9onebit: 124
+  line 66, col 39 to line 67, col 47 of module Session9onebit: 125
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 68, col 39 to line 69, col 77 of module Session9onebit: 60
+  line 68, col 39 to line 69, col 77 of module Session9onebit: 59
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 70, col 28 to line 71, col 66 of module Session9onebit: 188
+  line 70, col 28 to line 71, col 66 of module Session9onebit: 187
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 72, col 20 to line 72, col 31 of module Session9onebit: 372
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2772:0 @!@!@
-<enter3 line 74, col 1 to line 74, col 12 of module Session9onebit>: 113:169
-@!@!@ENDMSG 2772 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 74, col 20 to line 74, col 38 of module Session9onebit: 1887
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  |line 74, col 20 to line 74, col 27 of module Session9onebit: 1718
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 75, col 20 to line 75, col 56 of module Session9onebit: 169
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 76, col 20 to line 76, col 55 of module Session9onebit: 169
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 77, col 20 to line 77, col 25 of module Session9onebit: 169
+  line 72, col 20 to line 72, col 31 of module Session9onebit: 371
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2772:0 @!@!@
-<enter4 line 79, col 1 to line 79, col 12 of module Session9onebit>: 0:68
+<enter3 line 74, col 1 to line 74, col 12 of module Session9onebit>: 113:174
 @!@!@ENDMSG 2772 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 79, col 20 to line 79, col 38 of module Session9onebit: 1786
+  line 74, col 20 to line 74, col 38 of module Session9onebit: 1935
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 79, col 20 to line 79, col 27 of module Session9onebit: 1718
+  |line 74, col 20 to line 74, col 27 of module Session9onebit: 1761
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 80, col 20 to line 80, col 33 of module Session9onebit: 266
+  line 75, col 20 to line 75, col 56 of module Session9onebit: 174
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 80, col 21 to line 80, col 33 of module Session9onebit: 198
+  line 76, col 20 to line 76, col 55 of module Session9onebit: 174
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 81, col 20 to line 81, col 46 of module Session9onebit: 68
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 82, col 20 to line 82, col 54 of module Session9onebit: 68
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 83, col 20 to line 83, col 31 of module Session9onebit: 68
+  line 77, col 20 to line 77, col 25 of module Session9onebit: 174
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2772:0 @!@!@
-<enter5 line 85, col 1 to line 85, col 12 of module Session9onebit>: 61:165
+<enter4 line 79, col 1 to line 79, col 12 of module Session9onebit>: 0:72
 @!@!@ENDMSG 2772 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 85, col 20 to line 85, col 38 of module Session9onebit: 1883
+  line 79, col 20 to line 79, col 38 of module Session9onebit: 1833
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 85, col 20 to line 85, col 27 of module Session9onebit: 1718
+  |line 79, col 20 to line 79, col 27 of module Session9onebit: 1761
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 86, col 23 to line 86, col 33 of module Session9onebit: 309
+  line 80, col 20 to line 80, col 33 of module Session9onebit: 277
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 87, col 31 to line 87, col 44 of module Session9onebit: 290
+  |line 80, col 21 to line 80, col 33 of module Session9onebit: 205
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 87, col 32 to line 87, col 44 of module Session9onebit: 217
+  line 81, col 20 to line 81, col 46 of module Session9onebit: 72
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 88, col 31 to line 88, col 67 of module Session9onebit: 73
+  line 82, col 20 to line 82, col 54 of module Session9onebit: 72
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 89, col 31 to line 89, col 66 of module Session9onebit: 73
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 90, col 28 to line 91, col 36 of module Session9onebit: 92
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 92, col 20 to line 92, col 31 of module Session9onebit: 165
+  line 83, col 20 to line 83, col 31 of module Session9onebit: 72
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2772:0 @!@!@
-<cs line 94, col 1 to line 94, col 8 of module Session9onebit>: 43:92
+<enter5 line 85, col 1 to line 85, col 12 of module Session9onebit>: 61:163
 @!@!@ENDMSG 2772 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 94, col 16 to line 94, col 30 of module Session9onebit: 1808
+  line 85, col 20 to line 85, col 38 of module Session9onebit: 1924
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 94, col 16 to line 94, col 23 of module Session9onebit: 1716
+  |line 85, col 20 to line 85, col 27 of module Session9onebit: 1761
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 95, col 16 to line 95, col 19 of module Session9onebit: 92
+  line 86, col 23 to line 86, col 33 of module Session9onebit: 307
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 96, col 16 to line 96, col 49 of module Session9onebit: 92
+  line 87, col 31 to line 87, col 44 of module Session9onebit: 288
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 97, col 16 to line 97, col 38 of module Session9onebit: 92
+  |line 87, col 32 to line 87, col 44 of module Session9onebit: 216
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 88, col 31 to line 88, col 67 of module Session9onebit: 72
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 89, col 31 to line 89, col 66 of module Session9onebit: 72
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 90, col 28 to line 91, col 36 of module Session9onebit: 91
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 92, col 20 to line 92, col 31 of module Session9onebit: 163
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2772:0 @!@!@
-<exit line 99, col 1 to line 99, col 10 of module Session9onebit>: 10:92
+<cs line 94, col 1 to line 94, col 8 of module Session9onebit>: 43:91
 @!@!@ENDMSG 2772 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 99, col 18 to line 99, col 34 of module Session9onebit: 1807
+  line 94, col 16 to line 94, col 30 of module Session9onebit: 1852
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 99, col 18 to line 99, col 25 of module Session9onebit: 1715
+  |line 94, col 16 to line 94, col 23 of module Session9onebit: 1761
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 100, col 18 to line 100, col 54 of module Session9onebit: 92
+  line 95, col 16 to line 95, col 19 of module Session9onebit: 91
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 101, col 18 to line 101, col 44 of module Session9onebit: 92
+  line 96, col 16 to line 96, col 49 of module Session9onebit: 91
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 102, col 18 to line 102, col 50 of module Session9onebit: 92
+  line 97, col 16 to line 97, col 38 of module Session9onebit: 91
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<exit line 99, col 1 to line 99, col 10 of module Session9onebit>: 10:103
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 99, col 18 to line 99, col 34 of module Session9onebit: 1864
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 99, col 18 to line 99, col 25 of module Session9onebit: 1761
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 100, col 18 to line 100, col 54 of module Session9onebit: 103
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 101, col 18 to line 101, col 44 of module Session9onebit: 103
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 102, col 18 to line 102, col 50 of module Session9onebit: 103
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2202:0 @!@!@
 End of statistics.
 @!@!@ENDMSG 2202 @!@!@
 @!@!@STARTMSG 2200:0 @!@!@
-Progress(22) at 2023-06-06 16:30:51: 1,431 states generated (149,062 s/min), 568 distinct states found (59,166 ds/min), 0 states left on queue.
+Progress(22) at 2023-06-07 20:12:04: 1,431 states generated (121,442 s/min), 568 distinct states found (48,203 ds/min), 0 states left on queue.
 @!@!@ENDMSG 2200 @!@!@
 @!@!@STARTMSG 2199:0 @!@!@
 1431 states generated, 568 distinct states found, 0 states left on queue.
 @!@!@ENDMSG 2199 @!@!@
+@!@!@STARTMSG 2194:0 @!@!@
+The depth of the complete state graph search is 22.
+@!@!@ENDMSG 2194 @!@!@
+@!@!@STARTMSG 2268:0 @!@!@
+The average outdegree of the complete state graph is 1 (minimum is 0, the maximum 3 and the 95th percentile is 2).
+@!@!@ENDMSG 2268 @!@!@
 @!@!@STARTMSG 2186:0 @!@!@
-Finished in 580ms at (2023-06-06 16:30:51)
+Finished in 711ms at (2023-06-07 20:12:04)
 @!@!@ENDMSG 2186 @!@!@

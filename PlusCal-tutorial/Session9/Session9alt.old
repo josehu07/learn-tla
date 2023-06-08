@@ -6,10 +6,10 @@ ASSUME /\ N \in Nat
        /\ N > 0
        /\ Procs = 0..(N-1)
 
-(*--fair algorithm Alternate
+(*--algorithm Alternate
 variable turn \in Procs;
 
-process procs \in Procs
+fair process procs \in Procs
 begin
     ncs: while TRUE do
             skip;
@@ -20,7 +20,7 @@ begin
 end process;
 end algorithm; *)
 
-\* BEGIN TRANSLATION (chksum(pcal) = "c583f264" /\ chksum(tla) = "acc03d61")
+\* BEGIN TRANSLATION (chksum(pcal) = "c583f264" /\ chksum(tla) = "b5a6fc7f")
 VARIABLES turn, pc
 
 vars == << turn, pc >>
@@ -54,7 +54,8 @@ procs(self) == ncs(self) \/ enter(self) \/ cs(self) \/ exit(self)
 
 Next == (\E self \in Procs: procs(self))
 
-Spec == Init /\ [][Next]_vars
+Spec == /\ Init /\ [][Next]_vars
+        /\ WF_vars(Next)
 
 \* END TRANSLATION 
 ====

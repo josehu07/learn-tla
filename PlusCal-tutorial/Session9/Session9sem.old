@@ -1,4 +1,4 @@
----- MODULE Session9alt ----
+---- MODULE Session9sem ----
 EXTENDS TLC, Integers
 
 CONSTANT N, Procs
@@ -6,48 +6,49 @@ ASSUME /\ N \in Nat
        /\ N > 0
        /\ Procs = 0..(N-1)
 
-(*--algorithm Alternate
-variable turn \in Procs;
+(*--algorithm SemMutex
+variable sem = 1;
 
 fair process procs \in Procs
 begin
-    ncs: while TRUE do
+    ncs:- while TRUE do
             skip;
-    enter:  await turn = self;
+    enter:+ await sem = 1;
+            sem := 0;
     cs:     skip;
-    exit:   turn := (turn + 1) % N;
+    exit:   sem := 1;
     end while;
 end process;
 end algorithm; *)
 
-\* BEGIN TRANSLATION (chksum(pcal) = "22b4e645" /\ chksum(tla) = "f601b133")
-VARIABLES turn, pc
+\* BEGIN TRANSLATION (chksum(pcal) = "d2352433" /\ chksum(tla) = "6c889f6")
+VARIABLES sem, pc
 
-vars == << turn, pc >>
+vars == << sem, pc >>
 
 ProcSet == (Procs)
 
 Init == (* Global variables *)
-        /\ turn \in Procs
+        /\ sem = 1
         /\ pc = [self \in ProcSet |-> "ncs"]
 
 ncs(self) == /\ pc[self] = "ncs"
              /\ TRUE
              /\ pc' = [pc EXCEPT ![self] = "enter"]
-             /\ turn' = turn
+             /\ sem' = sem
 
 enter(self) == /\ pc[self] = "enter"
-               /\ turn = self
+               /\ sem = 1
+               /\ sem' = 0
                /\ pc' = [pc EXCEPT ![self] = "cs"]
-               /\ turn' = turn
 
 cs(self) == /\ pc[self] = "cs"
             /\ TRUE
             /\ pc' = [pc EXCEPT ![self] = "exit"]
-            /\ turn' = turn
+            /\ sem' = sem
 
 exit(self) == /\ pc[self] = "exit"
-              /\ turn' = (turn + 1) % N
+              /\ sem' = 1
               /\ pc' = [pc EXCEPT ![self] = "ncs"]
 
 procs(self) == ncs(self) \/ enter(self) \/ cs(self) \/ exit(self)
@@ -55,7 +56,8 @@ procs(self) == ncs(self) \/ enter(self) \/ cs(self) \/ exit(self)
 Next == (\E self \in Procs: procs(self))
 
 Spec == /\ Init /\ [][Next]_vars
-        /\ \A self \in Procs : WF_vars(procs(self))
+        /\ \A self \in Procs : WF_vars((pc[self] # "ncs") /\ procs(self))
 
 \* END TRANSLATION 
+
 ====

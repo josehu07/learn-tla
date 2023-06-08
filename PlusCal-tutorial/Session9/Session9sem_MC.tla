@@ -1,5 +1,5 @@
----- MODULE Session9onebit_MC ----
-EXTENDS Session9onebit
+---- MODULE Session9sem_MC ----
+EXTENDS Session9sem
 
 ConstN == 3
 ConstProcs == 0..(ConstN-1)
@@ -9,7 +9,6 @@ MutualExclusion == \A p, q \in Procs:
 
 DeadAndLivelockFree == (\E i \in Procs: pc[i] = "enter") ~> (\E i \in Procs: pc[i] = "cs")
 
-NoStarveProc0 == (pc[0] = "enter") ~> (pc[0] = "cs")
-NoStarveProc1 == (pc[1] = "enter") ~> (pc[1] = "cs")    \* Not satisfied by this algorithm
+StarvationFree == \A i \in Procs: (pc[i] = "enter") ~> (pc[i] = "cs")
 
 ====

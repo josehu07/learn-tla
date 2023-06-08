@@ -6,10 +6,10 @@ ASSUME /\ N \in Nat
        /\ N > 0
        /\ Procs = 0..(N-1)
 
-(*--fair algorithm 1BitProtocol
+(*--algorithm 1BitProtocol
 variable flag = [i \in Procs |-> FALSE];
 
-process procs \in Procs
+fair process procs \in Procs
 variable j = 0;
 begin
     ncs:- while TRUE do
