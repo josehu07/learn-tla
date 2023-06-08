@@ -64,7 +64,7 @@ begin
 end process;
 end algorithm; *)
 
-\* BEGIN TRANSLATION (chksum(pcal) = "ce418bae" /\ chksum(tla) = "3a0f82d7")
+\* BEGIN TRANSLATION (chksum(pcal) = "f11e91e8" /\ chksum(tla) = "3a0f82d7")
 VARIABLES AVar, BVar, AtoB, BtoA
 
 vars == << AVar, BVar, AtoB, BtoA >>

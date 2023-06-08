@@ -1,4 +1,4 @@
------------------------------ MODULE Session10 -----------------------------
+----------------------------- MODULE Session10set -----------------------------
 EXTENDS Integers, Sequences, FiniteSets, TLC
 
 CONSTANTS Nodes, Edges, root, MaxNodes
@@ -37,45 +37,31 @@ THEOREM RFCorrect == \A S \in SUBSET Nodes : RF(S, {}) = ReachableFrom(S)
 
 -----------------------------------------------------------------------------
 
-RemoveElt(sq, i) == [j \in 1..(Len(sq)-1) |-> IF j < i THEN sq[j] ELSE sq[j+1]]
-
-\* NumNodes == Len(Nodes)
-\*
-\* QueueOfSet(S) == LET InSet(e) == e \in S
-\*                  IN SelectSeq([i \in 1..NumNodes |-> NumNodes-i], InSet)
-\*
-\* PossibleQueues == {QueueOfSet(S): S \in SUBSET (0..(NumNodes-1))}
-\*
-\* THEOREM RemoveEltCorrect == \A q \in PossibleQueues: \A i \in 1..Len(q):
-\*                                 RemoveElt(q, i) = SubSeq(q, 1, i-1) \o SubSeq(q, i+1, Len(q))
-
------------------------------------------------------------------------------
-
 QueuesFrom(n) == {<<n, m>> : m \in Nbrs(n)}
 QueuesTo(n)  == {<<m, n>> : m \in Nbrs(n)}
 Queues == UNION {QueuesFrom(n) : n \in Nodes}
 
 (*--algorithm PathsToRoot
-variable msgs = [q \in Queues |-> IF q[1] = root THEN <<0>> ELSE << >>];
+variable msgs = [q \in Queues |-> IF q[1] = root THEN {0} ELSE { }];
 
 fair process node \in Nodes
 variables depth = IF self = root THEN 0 ELSE MaxNodes, parent = self;
 begin
     a: while TRUE do
-        with q \in {r \in QueuesTo(self): msgs[r] /= << >>} do
-            with i \in 1..Len(msgs[q]) do
-                if msgs[q][i] < depth - 1 then
-                    depth := msgs[q][i] + 1;
+        with q \in {r \in QueuesTo(self): msgs[r] /= { }} do
+            with d \in msgs[q] do
+                if d < depth - 1 then
+                    depth := d + 1;
                     parent := q[1];
                     msgs := [r \in Queues |->
                                 IF r = q
-                                    THEN RemoveElt(msgs[q], i)
+                                    THEN msgs[r] \ {d}
                                     ELSE IF r \in QueuesFrom(self) \ {<<self, q[1]>>}
-                                        THEN Append(msgs[r], depth)
+                                        THEN msgs[r] \cup {depth}
                                         ELSE msgs[r]
                             ];
                 else
-                    msgs[q] := RemoveElt(msgs[q], i);
+                    msgs[q] := msgs[q] \ {d};
                 end if;
             end with;
         end with;
@@ -83,7 +69,7 @@ begin
 end process;
 end algorithm; *)
 
-\* BEGIN TRANSLATION (chksum(pcal) = "29662ab3" /\ chksum(tla) = "eb08be02")
+\* BEGIN TRANSLATION (chksum(pcal) = "370fe203" /\ chksum(tla) = "665e3feb")
 VARIABLES msgs, depth, parent
 
 vars == << msgs, depth, parent >>
@@ -91,24 +77,24 @@ vars == << msgs, depth, parent >>
 ProcSet == (Nodes)
 
 Init == (* Global variables *)
-        /\ msgs = [q \in Queues |-> IF q[1] = root THEN <<0>> ELSE << >>]
+        /\ msgs = [q \in Queues |-> IF q[1] = root THEN {0} ELSE { }]
         (* Process node *)
         /\ depth = [self \in Nodes |-> IF self = root THEN 0 ELSE MaxNodes]
         /\ parent = [self \in Nodes |-> self]
 
-node(self) == \E q \in {r \in QueuesTo(self): msgs[r] /= << >>}:
-                \E i \in 1..Len(msgs[q]):
-                  IF msgs[q][i] < depth[self] - 1
-                     THEN /\ depth' = [depth EXCEPT ![self] = msgs[q][i] + 1]
+node(self) == \E q \in {r \in QueuesTo(self): msgs[r] /= { }}:
+                \E d \in msgs[q]:
+                  IF d < depth[self] - 1
+                     THEN /\ depth' = [depth EXCEPT ![self] = d + 1]
                           /\ parent' = [parent EXCEPT ![self] = q[1]]
                           /\ msgs' = [r \in Queues |->
                                          IF r = q
-                                             THEN RemoveElt(q, i)
+                                             THEN msgs[r] \ {d}
                                              ELSE IF r \in QueuesFrom(self) \ {<<self, q[1]>>}
-                                                 THEN Append(msgs[r], depth'[self])
+                                                 THEN msgs[r] \cup {depth'[self]}
                                                  ELSE msgs[r]
                                      ]
-                     ELSE /\ msgs' = [msgs EXCEPT ![q] = RemoveElt(q, i)]
+                     ELSE /\ msgs' = [msgs EXCEPT ![q] = msgs[q] \ {d}]
                           /\ UNCHANGED << depth, parent >>
 
 Next == (\E self \in Nodes: node(self))

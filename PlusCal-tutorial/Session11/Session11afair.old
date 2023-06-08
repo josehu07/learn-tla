@@ -1,4 +1,4 @@
----------------------------- MODULE Session11a ------------------------------
+---------------------------- MODULE Session11afair ------------------------------
 (***************************************************************************)
 (* This module contains an algorithm ABSpec that describes what the        *)
 (* Alternating Bit protocol is supposed to accomplish.  For a video        *)
@@ -25,7 +25,7 @@ Msgs == [data: Data, bit : {0,1}]
 (*--algorithm ABSpec
 variables AVar \in {msg \in Msgs: msg.bit = 1}, BVar = AVar;
 
-process A = "A"
+fair process A = "A"
 begin
     a: while TRUE do
         await AVar.bit = BVar.bit;
@@ -35,7 +35,7 @@ begin
     end while;
 end process;
 
-process B = "B"
+fair process B = "B"
 begin
     b: while TRUE do
         await AVar.bit /= BVar.bit;

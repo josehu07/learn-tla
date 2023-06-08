@@ -1,4 +1,4 @@
----------------------------- MODULE Session11a ------------------------------
+---------------------------- MODULE Session11projspec ------------------------------
 (***************************************************************************)
 (* This module contains an algorithm ABSpec that describes what the        *)
 (* Alternating Bit protocol is supposed to accomplish.  For a video        *)
@@ -22,10 +22,10 @@ CONSTANT Data
 
 Msgs == [data: Data, bit : {0,1}]
 
-(*--algorithm ABSpec
+(*--algorithm ABESpec
 variables AVar \in {msg \in Msgs: msg.bit = 1}, BVar = AVar;
 
-process A = "A"
+fair process A = "A"
 begin
     a: while TRUE do
         await AVar.bit = BVar.bit;
@@ -35,7 +35,7 @@ begin
     end while;
 end process;
 
-process B = "B"
+fair process B = "B"
 begin
     b: while TRUE do
         await AVar.bit /= BVar.bit;
@@ -44,7 +44,7 @@ begin
 end process;
 end algorithm; *)
 
-\* BEGIN TRANSLATION (chksum(pcal) = "492d4e49" /\ chksum(tla) = "734d0a40")
+\* BEGIN TRANSLATION (chksum(pcal) = "efb04894" /\ chksum(tla) = "5b45553c")
 VARIABLES AVar, BVar
 
 vars == << AVar, BVar >>
@@ -66,7 +66,9 @@ B == /\ AVar.bit /= BVar.bit
 
 Next == A \/ B
 
-Spec == Init /\ [][Next]_vars
+Spec == /\ Init /\ [][Next]_vars
+        /\ WF_vars(A)
+        /\ WF_vars(B)
 
 \* END TRANSLATION
 

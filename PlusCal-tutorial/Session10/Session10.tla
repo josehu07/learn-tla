@@ -37,6 +37,20 @@ THEOREM RFCorrect == \A S \in SUBSET Nodes : RF(S, {}) = ReachableFrom(S)
 
 -----------------------------------------------------------------------------
 
+RemoveElt(sq, i) == [j \in 1..(Len(sq)-1) |-> IF j < i THEN sq[j] ELSE sq[j+1]]
+
+\* NumNodes == Len(Nodes)
+\*
+\* QueueOfSet(S) == LET InSet(e) == e \in S
+\*                  IN SelectSeq([i \in 1..NumNodes |-> NumNodes-i], InSet)
+\*
+\* PossibleQueues == {QueueOfSet(S): S \in SUBSET (0..(NumNodes-1))}
+\*
+\* THEOREM RemoveEltCorrect == \A q \in PossibleQueues: \A i \in 1..Len(q):
+\*                                 RemoveElt(q, i) = SubSeq(q, 1, i-1) \o SubSeq(q, i+1, Len(q))
+
+-----------------------------------------------------------------------------
+
 QueuesFrom(n) == {<<n, m>> : m \in Nbrs(n)}
 QueuesTo(n)  == {<<m, n>> : m \in Nbrs(n)}
 Queues == UNION {QueuesFrom(n) : n \in Nodes}
@@ -49,25 +63,27 @@ variables depth = IF self = root THEN 0 ELSE MaxNodes, parent = self;
 begin
     a: while TRUE do
         with q \in {r \in QueuesTo(self): msgs[r] /= << >>} do
-            if Head(msgs[q]) < depth - 1 then
-                depth := Head(msgs[q]) + 1;
-                parent := q[1];
-                msgs := [r \in Queues |->
-                            IF r = q
-                                THEN Tail(msgs[q])
-                                ELSE IF r \in QueuesFrom(self) \ {<<self, q[1]>>}
-                                    THEN Append(msgs[r], depth)
-                                    ELSE msgs[r]
-                        ];
-            else
-                msgs[q] := Tail(msgs[q]);
-            end if;
+            with i \in 1..Len(msgs[q]) do
+                if msgs[q][i] < depth - 1 then
+                    depth := msgs[q][i] + 1;
+                    parent := q[1];
+                    msgs := [r \in Queues |->
+                                IF r = q
+                                    THEN RemoveElt(msgs[q], i)
+                                    ELSE IF r \in QueuesFrom(self) \ {<<self, q[1]>>}
+                                        THEN Append(msgs[r], depth)
+                                        ELSE msgs[r]
+                            ];
+                else
+                    msgs[q] := RemoveElt(msgs[q], i);
+                end if;
+            end with;
         end with;
     end while;
 end process;
 end algorithm; *)
 
-\* BEGIN TRANSLATION (chksum(pcal) = "c034e339" /\ chksum(tla) = "67e083e6")
+\* BEGIN TRANSLATION (chksum(pcal) = "87b524e3" /\ chksum(tla) = "3adbea13")
 VARIABLES msgs, depth, parent
 
 vars == << msgs, depth, parent >>
@@ -81,18 +97,19 @@ Init == (* Global variables *)
         /\ parent = [self \in Nodes |-> self]
 
 node(self) == \E q \in {r \in QueuesTo(self): msgs[r] /= << >>}:
-                IF Head(msgs[q]) < depth[self] - 1
-                   THEN /\ depth' = [depth EXCEPT ![self] = Head(msgs[q]) + 1]
-                        /\ parent' = [parent EXCEPT ![self] = q[1]]
-                        /\ msgs' = [r \in Queues |->
-                                       IF r = q
-                                           THEN Tail(msgs[q])
-                                           ELSE IF r \in QueuesFrom(self) \ {<<self, q[1]>>}
-                                               THEN Append(msgs[r], depth'[self])
-                                               ELSE msgs[r]
-                                   ]
-                   ELSE /\ msgs' = [msgs EXCEPT ![q] = Tail(msgs[q])]
-                        /\ UNCHANGED << depth, parent >>
+                \E i \in 1..Len(msgs[q]):
+                  IF msgs[q][i] < depth[self] - 1
+                     THEN /\ depth' = [depth EXCEPT ![self] = msgs[q][i] + 1]
+                          /\ parent' = [parent EXCEPT ![self] = q[1]]
+                          /\ msgs' = [r \in Queues |->
+                                         IF r = q
+                                             THEN RemoveElt(msgs[q], i)
+                                             ELSE IF r \in QueuesFrom(self) \ {<<self, q[1]>>}
+                                                 THEN Append(msgs[r], depth'[self])
+                                                 ELSE msgs[r]
+                                     ]
+                     ELSE /\ msgs' = [msgs EXCEPT ![q] = RemoveElt(msgs[q], i)]
+                          /\ UNCHANGED << depth, parent >>
 
 Next == (\E self \in Nodes: node(self))
 

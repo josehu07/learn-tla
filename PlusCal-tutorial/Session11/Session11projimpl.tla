@@ -1,4 +1,4 @@
------------------------------ MODULE Session11d ----------------------------
+----------------------------- MODULE Session11projimpl ----------------------------
 EXTENDS Integers, Sequences
 
 CONSTANT Data
@@ -7,7 +7,7 @@ RemoveElt(i, seq) == [j \in 1..(Len(seq)-1) |-> IF j < i THEN seq[j] ELSE seq[j+
 
 Msgs == [data: Data, bit : {0,1}]
 
-(*--algorithm AABB
+(*--algorithm AABBE
 variables AVar \in {msg \in Msgs: msg.bit = 1}, BVar = AVar,
           AtoB = << >>, BtoA = << >>;
 
@@ -65,7 +65,7 @@ begin
 end process;
 end algorithm; *)
 
-\* BEGIN TRANSLATION (chksum(pcal) = "2ef3257b" /\ chksum(tla) = "72d9443f")
+\* BEGIN TRANSLATION (chksum(pcal) = "df6d355d" /\ chksum(tla) = "72d9443f")
 VARIABLES AVar, BVar, AtoB, BtoA
 
 vars == << AVar, BVar, AtoB, BtoA >>

@@ -65,7 +65,7 @@ begin
 end process;
 end algorithm; *)
 
-\* BEGIN TRANSLATION (chksum(pcal) = "2ef3257b" /\ chksum(tla) = "72d9443f")
+\* BEGIN TRANSLATION (chksum(pcal) = "b4269394" /\ chksum(tla) = "8b958942")
 VARIABLES AVar, BVar, AtoB, BtoA
 
 vars == << AVar, BVar, AtoB, BtoA >>
@@ -73,7 +73,7 @@ vars == << AVar, BVar, AtoB, BtoA >>
 ProcSet == {"AS"} \cup {"AR"} \cup {"BS"} \cup {"BR"} \cup {"L"}
 
 Init == (* Global variables *)
-        /\ AVar \in {msg \in Msgs: msg.bit = 1}
+        /\ AVar \in {msg \in Msgs, msg.bit = 1}
         /\ BVar = AVar
         /\ AtoB = << >>
         /\ BtoA = << >>
