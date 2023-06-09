@@ -8,7 +8,8 @@ RemoveElt(i, seq) == [j \in 1..(Len(seq)-1) |-> IF j < i THEN seq[j] ELSE seq[j+
 Msgs == [data: Data, bit : {0,1}]
 
 (*--algorithm AABBE
-variables AVar \in {msg \in Msgs: msg.bit = 1}, BVar = AVar,
+variables AVar \in Msgs, BVar = AVar,
+          NewValQueue = << >>,
           AtoB = << >>, BtoA = << >>;
 
 fair process ASend = "AS"
@@ -23,9 +24,9 @@ begin
     ar: while TRUE do
         await BtoA /= << >>;
         if Head(BtoA) = AVar.bit then
-            with d \in Data do
-                AVar := [data |-> d, bit |-> 1 - AVar.bit];
-            end with;
+            await Len(NewValQueue) > 0;
+            AVar := [data |-> Head(NewValQueue), bit |-> 1 - AVar.bit];
+            NewValQueue := Tail(NewValQueue);
         end if;
         BtoA := Tail(BtoA);
     end while;
@@ -63,35 +64,47 @@ begin
         end either;
     end while;
 end process;
+
+process E = "E"
+begin
+    e: while TRUE do
+        await AVar = BVar;
+        with d \in Data do
+            NewValQueue := Append(NewValQueue, d);
+        end with;
+    end while;
+end process;
 end algorithm; *)
 
-\* BEGIN TRANSLATION (chksum(pcal) = "df6d355d" /\ chksum(tla) = "72d9443f")
-VARIABLES AVar, BVar, AtoB, BtoA
+\* BEGIN TRANSLATION (chksum(pcal) = "5345c49e" /\ chksum(tla) = "b0e7f8eb")
+VARIABLES AVar, BVar, NewValQueue, AtoB, BtoA
 
-vars == << AVar, BVar, AtoB, BtoA >>
+vars == << AVar, BVar, NewValQueue, AtoB, BtoA >>
 
-ProcSet == {"AS"} \cup {"AR"} \cup {"BS"} \cup {"BR"} \cup {"L"}
+ProcSet == {"AS"} \cup {"AR"} \cup {"BS"} \cup {"BR"} \cup {"L"} \cup {"E"}
 
 Init == (* Global variables *)
-        /\ AVar \in {msg \in Msgs: msg.bit = 1}
+        /\ AVar \in Msgs
         /\ BVar = AVar
+        /\ NewValQueue = << >>
         /\ AtoB = << >>
         /\ BtoA = << >>
 
 ASend == /\ AtoB' = Append(AtoB, AVar)
-         /\ UNCHANGED << AVar, BVar, BtoA >>
+         /\ UNCHANGED << AVar, BVar, NewValQueue, BtoA >>
 
 ARecv == /\ BtoA /= << >>
          /\ IF Head(BtoA) = AVar.bit
-               THEN /\ \E d \in Data:
-                         AVar' = [data |-> d, bit |-> 1 - AVar.bit]
+               THEN /\ Len(NewValQueue) > 0
+                    /\ AVar' = [data |-> Head(NewValQueue), bit |-> 1 - AVar.bit]
+                    /\ NewValQueue' = Tail(NewValQueue)
                ELSE /\ TRUE
-                    /\ AVar' = AVar
+                    /\ UNCHANGED << AVar, NewValQueue >>
          /\ BtoA' = Tail(BtoA)
          /\ UNCHANGED << BVar, AtoB >>
 
 BSend == /\ BtoA' = Append(BtoA, BVar.bit)
-         /\ UNCHANGED << AVar, BVar, AtoB >>
+         /\ UNCHANGED << AVar, BVar, NewValQueue, AtoB >>
 
 BRecv == /\ AtoB /= << >>
          /\ IF Head(AtoB).bit /= BVar.bit
@@ -99,7 +112,7 @@ BRecv == /\ AtoB /= << >>
                ELSE /\ TRUE
                     /\ BVar' = BVar
          /\ AtoB' = Tail(AtoB)
-         /\ UNCHANGED << AVar, BtoA >>
+         /\ UNCHANGED << AVar, NewValQueue, BtoA >>
 
 LoseMsgs == /\ \/ /\ \E i \in 1..Len(AtoB):
                        AtoB' = RemoveElt(i, AtoB)
@@ -107,9 +120,14 @@ LoseMsgs == /\ \/ /\ \E i \in 1..Len(AtoB):
                \/ /\ \E i \in 1..Len(BtoA):
                        BtoA' = RemoveElt(i, BtoA)
                   /\ AtoB' = AtoB
-            /\ UNCHANGED << AVar, BVar >>
+            /\ UNCHANGED << AVar, BVar, NewValQueue >>
 
-Next == ASend \/ ARecv \/ BSend \/ BRecv \/ LoseMsgs
+E == /\ AVar = BVar
+     /\ \E d \in Data:
+          NewValQueue' = Append(NewValQueue, d)
+     /\ UNCHANGED << AVar, BVar, AtoB, BtoA >>
+
+Next == ASend \/ ARecv \/ BSend \/ BRecv \/ LoseMsgs \/ E
 
 Spec == /\ Init /\ [][Next]_vars
         /\ WF_vars(ASend)

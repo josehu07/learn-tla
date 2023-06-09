@@ -108,3 +108,8 @@ Spec == /\ Init /\ [][Next]_vars
 \* Modification History
 \* Last modified Thu Aug 05 17:35:59 PDT 2021 by lamport
 \* Created Thu Jun 24 13:50:11 PDT 2021 by lamport   
+
+(*
+ * Termination detection example: Huang's termination detection algorithm
+ *      https://en.wikipedia.org/wiki/Huang%27s_algorithm
+ *)

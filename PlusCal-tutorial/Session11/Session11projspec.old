@@ -16,22 +16,22 @@
 (* set of all such records Msgs, because, in the Alternating Bit protocol, *)
 (* those values will be sent as messages.                                  *)
 (***************************************************************************)
-EXTENDS Integers
+EXTENDS Integers, Sequences
 
 CONSTANT Data
 
 Msgs == [data: Data, bit : {0,1}]
 
 (*--algorithm ABESpec
-variables AVar \in {msg \in Msgs: msg.bit = 1}, BVar = AVar;
+variables AVar \in Msgs, BVar = AVar,
+          NewValQueue = << >>;
 
 fair process A = "A"
 begin
     a: while TRUE do
-        await AVar.bit = BVar.bit;
-        with d \in Data do
-            AVar := [data |-> d, bit |-> 1 - AVar.bit];
-        end with;
+        await Len(NewValQueue) > 0;
+        AVar := [data |-> Head(NewValQueue), bit |-> 1 - AVar.bit];
+        NewValQueue := Tail(NewValQueue);
     end while;
 end process;
 
@@ -42,29 +42,45 @@ begin
         BVar := AVar;
     end while;
 end process;
+
+process E = "E"
+begin
+    e: while TRUE do
+        await AVar.bit = BVar.bit;
+        with d \in Data do
+            NewValQueue := Append(NewValQueue, d);
+        end with;
+    end while;
+end process;
 end algorithm; *)
 
-\* BEGIN TRANSLATION (chksum(pcal) = "1772d0e1" /\ chksum(tla) = "5b45553c")
-VARIABLES AVar, BVar
+\* BEGIN TRANSLATION (chksum(pcal) = "23583917" /\ chksum(tla) = "333c5d95")
+VARIABLES AVar, BVar, NewValQueue
 
-vars == << AVar, BVar >>
+vars == << AVar, BVar, NewValQueue >>
 
-ProcSet == {"A"} \cup {"B"}
+ProcSet == {"A"} \cup {"B"} \cup {"E"}
 
 Init == (* Global variables *)
-        /\ AVar \in {msg \in Msgs: msg.bit = 1}
+        /\ AVar \in Msgs
         /\ BVar = AVar
+        /\ NewValQueue = << >>
 
-A == /\ AVar.bit = BVar.bit
-     /\ \E d \in Data:
-          AVar' = [data |-> d, bit |-> 1 - AVar.bit]
+A == /\ Len(NewValQueue) > 0
+     /\ AVar' = [data |-> Head(NewValQueue), bit |-> 1 - AVar.bit]
+     /\ NewValQueue' = Tail(NewValQueue)
      /\ BVar' = BVar
 
 B == /\ AVar.bit /= BVar.bit
      /\ BVar' = AVar
-     /\ AVar' = AVar
+     /\ UNCHANGED << AVar, NewValQueue >>
 
-Next == A \/ B
+E == /\ AVar.bit = BVar.bit
+     /\ \E d \in Data:
+          NewValQueue' = Append(NewValQueue, d)
+     /\ UNCHANGED << AVar, BVar >>
+
+Next == A \/ B \/ E
 
 Spec == /\ Init /\ [][Next]_vars
         /\ WF_vars(A)

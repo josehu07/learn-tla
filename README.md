@@ -5,8 +5,6 @@ This repo contains TLA+ video course solutions adapted from [Lamport's TLA+ vide
 * All PlusCal code in this repo uses the [P-syntax](https://lamport.azurewebsites.net/tla/p-manual.pdf) (instead of the [C-syntax](https://lamport.azurewebsites.net/tla/c-manual.pdf)).
 * All sessions are made runnable with the [VSCode TLA+ extension](https://github.com/tlaplus/vscode-tlaplus) (instead of the heavy-weight [TLA+ Toolbox IDE](https://lamport.azurewebsites.net/tla/toolbox.html)).
 
-**TODO**: finish PlusCal session 10 project & session 11 project...
-
 **TODO**: finish TLA+ video course solutions...
 
 ## Checking Models
