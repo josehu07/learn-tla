@@ -1,5 +1,10 @@
 # TLA+/PlusCal Tutorial Solutions
 
+![languages](https://img.shields.io/github/languages/count/josehu07/learn-tla?color=green)
+![top-lang](https://img.shields.io/github/languages/top/josehu07/learn-tla?color=purple)
+![code-size](https://img.shields.io/github/languages/code-size/josehu07/learn-tla?color=lightgrey)
+![license](https://img.shields.io/github/license/josehu07/learn-tla)
+
 This repo contains TLA+ video course solutions adapted from [Lamport's TLA+ video course](https://lamport.azurewebsites.net/video/videos.html) and PlusCal tutorial solutions adapted from [Lamport's PlusCal tutorial](https://lamport.azurewebsites.net/tla/tutorial/contents.html).
 
 * All PlusCal code in this repo uses the [P-syntax](https://lamport.azurewebsites.net/tla/p-manual.pdf) (instead of the [C-syntax](https://lamport.azurewebsites.net/tla/c-manual.pdf)).
