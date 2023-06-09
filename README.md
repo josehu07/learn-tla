@@ -10,8 +10,6 @@ This repo contains TLA+ video course solutions adapted from [Lamport's TLA+ vide
 * All PlusCal code in this repo uses the [P-syntax](https://lamport.azurewebsites.net/tla/p-manual.pdf) (instead of the [C-syntax](https://lamport.azurewebsites.net/tla/c-manual.pdf)).
 * All sessions are made runnable with the [VSCode TLA+ extension](https://github.com/tlaplus/vscode-tlaplus) (instead of the heavy-weight [TLA+ Toolbox IDE](https://lamport.azurewebsites.net/tla/toolbox.html)).
 
-**TODO**: finish TLA+ video course solutions...
-
 ## Checking Models
 
 To generate a TLA+ specification from PlusCal:
@@ -31,3 +29,9 @@ To let TLC check a TLA+ model with parameters:
 3. Run the **TLA+: Check model with TLC** command on this `*_MC.tla` file.
 
 If everything goes well, a model-checking result panel should appear at side.
+
+## TODO List
+
+* [x] PlusCal tutorial
+* [x] TLA+ video course
+* [ ] Dr. TLA+ series?
