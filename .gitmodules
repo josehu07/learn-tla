@@ -1,0 +1,3 @@
+[submodule "Dr.-TLA+-series"]
+	path = Dr.-TLA+-series
+	url = https://github.com/tlaplus/DrTLAPlus.git
