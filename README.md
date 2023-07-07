@@ -1,4 +1,4 @@
-# TLA+/PlusCal Tutorial Solutions
+# TLA+/PlusCal Study Material
 
 ![languages](https://img.shields.io/github/languages/count/josehu07/learn-tla?color=green)
 ![top-lang](https://img.shields.io/github/languages/top/josehu07/learn-tla?color=purple)
