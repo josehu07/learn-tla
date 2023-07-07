@@ -10,6 +10,7 @@ This repo contains:
 * TLA+ video course solutions adapted from [Lamport's TLA+ video course](https://lamport.azurewebsites.net/video/videos.html)
 * PlusCal tutorial solutions adapted from [Lamport's PlusCal tutorial](https://lamport.azurewebsites.net/tla/tutorial/contents.html)
 * Dr. TLA+ lecture series material directly linked from [here](https://github.com/tlaplus/DrTLAPlus/tree/master)
+* Dr. TLA+ series specifications cleansed and extended with PlusCal by me (WIP)
 
 All PlusCal code in this repo uses the [P-syntax](https://lamport.azurewebsites.net/tla/p-manual.pdf) (instead of the [C-syntax](https://lamport.azurewebsites.net/tla/c-manual.pdf)). All sessions are made runnable with the [VSCode TLA+ extension](https://github.com/tlaplus/vscode-tlaplus) (instead of the canonical [TLA+ Toolbox IDE](https://lamport.azurewebsites.net/tla/toolbox.html)).
 
@@ -41,5 +42,5 @@ TLAPS is a new addition to TLA+ using SMT solvers to support general, possibly u
 
 * [x] PlusCal tutorial
 * [x] TLA+ video course
-* [x] Dr. TLA+ series
+* [ ] Dr. TLA+ series
 * [ ] TLAPS proofs?
