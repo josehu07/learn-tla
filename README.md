@@ -38,6 +38,15 @@ If everything goes well, a model-checking result panel should appear at side.
 
 TLAPS is a new addition to TLA+ using SMT solvers to support general, possibly unbounded-state theorem proving. The VSCode extension currently does not offer TLAPS integration (see progress [here](https://github.com/tlaplus/vscode-tlaplus/issues/153)). Also, there is no official tutorial about TLAPS that is complete and publicly available right now. New things might be added to this repo as TLAPS becomes increasingly mature.
 
+## Other Useful Links
+
+* [Learn TLA+ wiki](https://learntla.com/index.html)
+* [TLA+ examples gallery](https://github.com/tlaplus/Examples)
+* [PlusCal P-syntax manual](https://lamport.azurewebsites.net/tla/p-manual.pdf)
+* [PlusCal cheatsheet](https://d3s.mff.cuni.cz/f/teaching/nswi101/old/pluscal.pdf)
+* [TLA+ language summary](https://lamport.azurewebsites.net/tla/summary.pdf)
+* [Beyond the Toolbox doc](https://learntla.com/topics/cli.html)
+
 ## TODO List
 
 * [x] PlusCal tutorial
