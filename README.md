@@ -5,6 +5,8 @@
 ![code-size](https://img.shields.io/github/languages/code-size/josehu07/learn-tla?color=lightgrey)
 ![license](https://img.shields.io/github/license/josehu07/learn-tla)
 
+First of all, what is TLA+ and why is it (becoming increasingly) useful? See Lamport's [official TLA+ website](https://lamport.azurewebsites.net/tla/tla.html) for a good answer.
+
 This repo contains:
 
 * TLA+ video course solutions adapted from [Lamport's TLA+ video course](https://lamport.azurewebsites.net/video/videos.html)
