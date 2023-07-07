@@ -12,7 +12,7 @@ This repo contains:
 * TLA+ video course solutions adapted from [Lamport's TLA+ video course](https://lamport.azurewebsites.net/video/videos.html)
 * PlusCal tutorial solutions adapted from [Lamport's PlusCal tutorial](https://lamport.azurewebsites.net/tla/tutorial/contents.html)
 * Dr. TLA+ lecture series material directly linked from [here](https://github.com/tlaplus/DrTLAPlus/tree/master)
-* Dr. TLA+ series specifications cleansed and extended with PlusCal by me (WIP)
+* Dr. TLA+ series specifications cleansed and extended with PlusCal by me (WIP, 🌟)
 
 All PlusCal code in this repo uses the [P-syntax](https://lamport.azurewebsites.net/tla/p-manual.pdf) (instead of the [C-syntax](https://lamport.azurewebsites.net/tla/c-manual.pdf)). All sessions are made runnable with the [VSCode TLA+ extension](https://github.com/tlaplus/vscode-tlaplus) (instead of the canonical [TLA+ Toolbox IDE](https://lamport.azurewebsites.net/tla/toolbox.html)).
 
@@ -20,21 +20,22 @@ All PlusCal code in this repo uses the [P-syntax](https://lamport.azurewebsites.
 
 To generate a TLA+ specification from PlusCal:
 
-1. Change into a session folder `SessionX/`
-2. Open a chosen example module `SessionX*.tla`
+1. Change directory into a folder containing specs
+2. Open a chosen module file `*.tla` containing PlusCal code
 3. Run the **TLA+: Parse module** command on this file
     * TLA+ specification code will be generated from the PlusCal comment
-    * This step is already done for all PlusCal sessions in this repo
+    * This step is already done for all modules in this repo (and should be done automatically on save by the VSCode extension for any file containing a PlusCal algorithm)
 
-To let TLC check a TLA+ model with parameters:
+To let TLC check a bounded TLA+ model with parameters:
 
-1. Open the corresponding configuration file `*_MC.cfg`
+1. Open the corresponding model-checkable module `*_MC.tla`
+    * Tweak model checking configurations, if any put in here, as desired
+    * Define all the invariants and temporal properties to be checked
+2. Open the corresponding configuration file `*_MC.cfg`
     * Tweak model checking configurations as desired
-2. Open the corresponding model-checkable module `*_MC.tla`
-    * Tweak model parameters as desired
-3. Run the **TLA+: Check model with TLC** command on this `*_MC.tla` file
-
-If everything goes well, a model-checking result panel should appear at side.
+    * List the invariants and temporal properties to check against
+3. Run the **TLA+: Check model with TLC** command on the `*_MC.tla` file
+    * If everything goes well, a model-checking result panel should appear at side
 
 ## General Proofs w/ TLAPS
 
@@ -53,5 +54,5 @@ TLAPS is a new addition to TLA+ using SMT solvers to support general, possibly u
 
 * [x] PlusCal tutorial
 * [x] TLA+ video course
-* [ ] Dr. TLA+ series
+* [ ] Dr. TLA+ series (WIP)
 * [ ] TLAPS proofs?
