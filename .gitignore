@@ -1,2 +1,5 @@
-**/states/
 .vscode/
+
+**/states/
+**/*.old
+**/*.out

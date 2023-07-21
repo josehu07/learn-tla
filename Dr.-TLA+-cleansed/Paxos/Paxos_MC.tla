@@ -2,9 +2,10 @@
 \* EXTENDS PaxosByHand
 EXTENDS PaxosPlusCal
 
-PermAcceptors == Permutations(Acceptors)
+SymmetricPerms ==      Permutations(Acceptors)
+                  \cup Permutations(Values)
 
-BoundedBallots == 0..2
+ConstBallots == 0..2
 
 (***********************)
 (* Helper definitions. *)
@@ -21,9 +22,9 @@ ChosenIn(v, b) == \E Q \in Quorums: \A a \in Q: VotedForIn(a, v, b)
 
 Chosen(v) == \E b \in Ballots : ChosenIn(v, b)
 
-(***************************)
-(* TypeOK check invariant. *)
-(***************************)
+(*************************)
+(* Type check invariant. *)
+(*************************)
 Messages ==      [type: {"1a"}, bal: Ballots]
             \cup [type: {"1b"}, bal: Ballots,
                                 maxAccepted: Ballots \cup {-1},
@@ -88,7 +89,7 @@ ConsistencyInv ==
 (******************************)
 chosenValues == {v \in Values: Chosen(v)}
 
-ConsensusModule == INSTANCE Consensus WITH chosen <- chosenValues
-ConsensusProperty == ConsensusModule!Spec
+ConsensusModule == INSTANCE ConsensusSingle WITH chosen <- chosenValues
+ConsensusSpec == ConsensusModule!Spec
 
 ====
