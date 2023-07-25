@@ -90,7 +90,7 @@ Stability ==
             (v \in chosen[s]) => [](v \in chosen[s])
 
 Consistency ==
-    [](\A s \in Slots: Cardinality(chosen[s]) <= 1)
+    [](\A s \in Slots: Cardinality(chosen[s]) =< 1)
 
 THEOREM Spec => ([]TypeOK) /\ Nontriviality /\ Stability /\ Consistency
 
